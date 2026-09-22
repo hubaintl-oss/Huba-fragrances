@@ -1,21 +1,8 @@
-# HUBA Fragrances: website settings (Apache)
-Options -Indexes
-DirectoryIndex index.html
-
-# The admin login file must never be downloaded
-<Files "auth.php">
-  <IfModule mod_authz_core.c>
-    Require all denied
-  </IfModule>
-  <IfModule !mod_authz_core.c>
-    Order allow,deny
-    Deny from all
-  </IfModule>
-</Files>
-
-# Always fetch the newest prices and pictures list
-<IfModule mod_headers.c>
-  <Files "catalog.json">
-    Header set Cache-Control "no-cache, must-revalidate"
-  </Files>
+# Saved older versions: not for the public
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
 </IfModule>
